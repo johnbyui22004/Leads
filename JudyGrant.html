@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judy Grant Plumbing | Trusted Local Plumber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #0f172a;
+            /* Deep Slate Blue */
+            --accent-color: #0ea5a4;
+            /* Teal for plumbing */
+            --text-main: #334155;
+            --text-light: #f8fafc;
+            --bg-light: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            filter: brightness(0.9);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 80vh;
+            /* use local plumber image for the hero background */
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)),
+                url('images/Local-Plumber-Broomall-WM-Henderson-Photo.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: var(--text-light);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(0.95);
+        }
+
+        /* --- SERVICES SECTION --- */
+        #services {
+            padding: 5rem 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* --- WHY CHOOSE US --- */
+        #why-us {
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .why-content {
+            flex: 1;
+        }
+
+        .why-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* image placeholder styles (used where local photos are not provided) */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            background: linear-gradient(135deg, #e6eef8, #f1f5f9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1.05rem;
+            border-radius: 4px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            min-height: 0;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .check-list li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- GALLERY --- */
+        #gallery {
+            padding: 5rem 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-grid img:hover {
+            opacity: 0.8;
+        }
+
+        /* --- BOTTOM CTA --- */
+        #bottom-cta {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 5rem 20px;
+        }
+
+        #bottom-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #bottom-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #why-us {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Judy<span>Grant</span></div>
+        <button class="nav-btn quote-trigger">Call: (208) 555-0198</button>
+    </nav>
+
+    <section id="hero">
+        <h1>Trusted Local Plumbing Services</h1>
+        <p>Fast, reliable plumbing for homes and businesses — leak repair, drain cleaning, water heaters, and more.
+            Serving Rexburg, Idaho Falls, and surrounding areas.</p>
+        <button class="cta-btn quote-trigger">Get Your Free Estimate Today</button>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Plumbing Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Emergency Leak Repair</h3>
+                <p>24/7 fast response to stop leaks and prevent water damage using professional diagnostics and repair.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧰</div>
+                <h3>Drain Cleaning & Clog Removal</h3>
+                <p>Safe, effective drain clearing for kitchen, bath, sewer, and main lines using cameras and
+                    hydro-jetting when needed.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔥</div>
+                <h3>Water Heater Repair & Installation</h3>
+                <p>Tank & tankless water heater service, maintenance, and replacement to keep your hot water flowing.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Pipe Repair & Replacement</h3>
+                <p>From minor repairs to full repiping, we use durable materials and techniques that last.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us">
+        <div class="why-image">
+            <!-- placeholder to reserve image space; hero uses the local plumber image -->
+            <div class="image-placeholder">Plumber image placeholder</div>
+        </div>
+        <div class="why-content">
+            <h2 class="section-title" style="margin-bottom: 1rem; text-align: left;">Why Choose Judy Grant Plumbing?
+            </h2>
+            <p>Local, experienced plumbers who show up on time, diagnose accurately, and fix the problem right the first
+                time.</p>
+            <ul class="check-list">
+                <li>✔️ <strong>Licensed & Insured Professionals</strong></li>
+                <li>✔️ <strong>Transparent Pricing & Free Estimates</strong></li>
+                <li>✔️ <strong>Rapid Emergency Response</strong></li>
+                <li>✔️ <strong>Quality Parts & Workmanship</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Recent Plumbing Jobs</h2>
+        <div class="gallery-grid">
+            <div class="image-placeholder gallery-item">Project image placeholder</div>
+            <div class="image-placeholder gallery-item">Project image placeholder</div>
+            <div class="image-placeholder gallery-item">Project image placeholder</div>
+        </div>
+    </section>
+
+    <section id="bottom-cta">
+        <h2>Need a plumber right away?</h2>
+        <p>Don't wait — contact Judy Grant Plumbing for fast, reliable service and honest pricing.</p>
+        <button class="cta-btn quote-trigger" style="background-color: white; color: var(--primary-color);">Get a Free
+            Estimate</button>
+    </section>
+
+    <script>
+        // Select all buttons meant to trigger a quote/call
+        const quoteButtons = document.querySelectorAll('.quote-trigger');
+
+        quoteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert("This button would open up a contact form or directly call the business! A great way to turn visitors into leads.");
+            });
+        });
+    </script>
+</body>
+
+</html>

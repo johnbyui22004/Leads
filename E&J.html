@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E&L Drywall LLC | Professional Drywall & Painting - St. Anthony</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- Root and Reset --- */
+        :root {
+            /* Black, White, and Neutral Gray Palette */
+            --bg-black: #000000;
+            --bg-dark-gray: #1a1a1a;
+            --bg-white: #ffffff;
+            --bg-light-gray: #f5f5f5;
+            --bg-card-border: #e0e0e0;
+
+            --text-dark: #212121;
+            --text-white: #ffffff;
+            --text-muted: #757575;
+
+            --accent-black: #000000;
+            /* For buttons and emphasis */
+            --accent-dark-hover: #333333;
+
+            --star-gold: #ffc107;
+            /* A single pop of classic quality gold */
+
+            --font-family: 'Montserrat', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-dark-hover);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Global Elements & Typography --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-black);
+            color: var(--text-white);
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            border: 2px solid var(--accent-black);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bg-white);
+            color: var(--accent-black);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-dark);
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            border: 2px solid var(--accent-black);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-black);
+            color: var(--text-white);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .header-cta i {
+            font-size: 1.1rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 120px 0 100px;
+            color: var(--text-white);
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('your-drywall-hero.jpg') center/cover;
+            text-align: center;
+        }
+
+        .hero-h2 {
+            font-size: 2.8rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.2;
+        }
+
+        .hero-p {
+            font-size: 1rem;
+            color: #d0d0d0;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .hero-ctas .btn-secondary {
+            border-color: var(--text-white);
+            color: var(--text-white);
+        }
+
+        .hero-ctas .btn-secondary:hover {
+            background-color: var(--text-white);
+            color: var(--accent-black);
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #d0d0d0;
+        }
+
+        .hero-features i {
+            color: var(--bg-white);
+            margin-right: 8px;
+        }
+
+        /* --- Services Section --- */
+        .services {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid var(--bg-card-border);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        /* Second row centered - specific to the reference layout */
+        .service-grid-row-2 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-grid-row-2 .service-card {
+            width: calc(33.33% - 20px);
+        }
+
+        /* --- Why Choose Us Section --- */
+        .why-choose {
+            padding: 80px 0;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+        }
+
+        .why-choose .section-title {
+            text-align: left;
+            margin-bottom: 2rem;
+            color: var(--text-white);
+        }
+
+        .why-lead-text {
+            color: #d0d0d0;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .why-list {
+            list-style: none;
+        }
+
+        .why-list li {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .why-list i {
+            font-size: 1.2rem;
+        }
+
+        /* --- Reviews Section --- */
+        .reviews {
+            padding: 80px 0;
+            background-color: var(--bg-white);
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 6px;
+            border: 1px solid var(--bg-card-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-stars {
+            color: var(--star-gold);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .review-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* --- Call to Action & Form Section --- */
+        .cta-final {
+            padding: 80px 0;
+            background-color: var(--bg-light-gray);
+        }
+
+        .cta-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cta-header h3 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .cta-wrapper {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .cta-text-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-subtitle {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .cta-phone-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-black);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+        }
+
+        .info-group h5 {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .info-group p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .cta-form-side {
+            flex: 1.2;
+            min-width: 300px;
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 6px;
+            border: 1px solid var(--bg-card-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .cta-form-side h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .cta-form-side .p-form-lead {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-white);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-black);
+        }
+
+        .form-btn {
+            width: 100%;
+        }
+
+        .status-msg {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- Fake Map Area --- */
+        .fake-map {
+            height: 300px;
+            background-color: #e0e0e0;
+            /* Placeholder color for map */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--bg-black);
+            color: #a0a0a0;
+            font-size: 0.85rem;
+        }
+
+        .logo-footer {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hero-h2 {
+                font-size: 2.2rem;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-grid-row-2 {
+                flex-wrap: wrap;
+            }
+
+            .service-grid-row-2 .service-card {
+                width: calc(50% - 15px);
+            }
+
+            .review-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                display: none;
+                /* Simple mobile nav hiding */
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .service-grid,
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid-row-2 .service-card {
+                width: 100%;
+            }
+
+            .cta-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .cta-phone-large {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>E&L <span>DRYWALL</span> LLC</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why">About Us</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:320-310-9441">320-310-9441</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-h2">Reliable Drywall Service in St. Anthony?</h2>
+            <p class="hero-p">Local Certified Specialists. Full warranty workmanship guarantees. Your trusted mobile
+                drywall and painting solution.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Request Quote</a>
+                <a href="#services" class="btn-secondary">Our Services</a>
+            </div>
+            <div class="hero-features">
+                <span><i class="fas fa-check-circle"></i>In-House Drywall & Painting</span>
+                <span><i class="fas fa-check-circle"></i>Fully Licensed & Insured</span>
+                <span><i class="fas fa-check-circle"></i>Emergency Repair Service</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h3 class="section-title">Our Drywall Services</h3>
+
+            <div class="service-grid">
+                <div class="service-card">
+                    <h4>Tape & Float</h4>
+                    <p>Creating seamless joints and a flawlessly smooth base for your walls.</p>
+                    <a href="#contact" class="btn-secondary btn-sm">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <h4>Texture Application</h4>
+                    <p>Apply custom textures like knockdown or orange peel to match your style.</p>
+                    <a href="#contact" class="btn-secondary btn-sm">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <h4>Full Wall Painting</h4>
+                    <p>Professional painting with a clean, durable finish to make your walls pop.</p>
+                    <a href="#contact" class="btn-secondary btn-sm">Learn More</a>
+                </div>
+            </div>
+
+            <div class="service-grid-row-2">
+                <div class="service-card">
+                    <h4>Drywall Repairs</h4>
+                    <p>Holes, cracks, and water damage expertly patched for an invisible repair.</p>
+                    <a href="#contact" class="btn-secondary btn-sm">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <h4>New Drywall Install</h4>
+                    <p>Complete drywall hanging and finishing for renovations or additions.</p>
+                    <a href="#contact" class="btn-secondary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose" id="why">
+        <div class="container">
+            <h3 class="section-title">Why St. Anthony Trusts Us</h3>
+            <p class="why-lead-text">With years of local service, E&L Drywall LLC is your go-to for top-tier drywall
+                workmanship that lasts.</p>
+            <ul class="why-list">
+                <li><i class="fas fa-certificate"></i> We match every drywall job to strict internal quality standards
+                </li>
+                <li><i class="fas fa-users-cog"></i> Certified technicians with years of hands-on experience</li>
+                <li><i class="fas fa-hard-hat"></i> Focus on clean, safe work environments for your home</li>
+                <li><i class="fas fa-clock"></i> Dependable scheduling and timely project completion</li>
+                <li><i class="fas fa-handshake"></i> Fully insured workmanship guarantees for your peace of mind</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h3 class="section-title">Customer Feedback</h3>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"E&L saved my weekend. My DIY drywall attempt was a mess, but their tape and
+                        float work made it look perfect. Fast, clean, and reliable!"</p>
+                    <p class="review-author">— Steven Rhoades</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The texture job they did to match my existing walls was invisible. My
+                        painter asked who did the drywall because it was so good."</p>
+                    <p class="review-author">— Sarah M.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Fixed multiple water damage spots from a leak. Clean work and very
+                        professional. Recommended to all my neighbors."</p>
+                    <p class="review-author">— Chris G.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final" id="contact">
+        <div class="container">
+            <div class="cta-header">
+                <h3>Ready to Fix Your Walls?</h3>
+                <p>Submit the form or call us for a fast, free estimate.</p>
+            </div>
+            <div class="cta-wrapper">
+                <div class="cta-text-side">
+                    <p class="contact-subtitle">Call Us Now</p>
+                    <a href="tel:208-390-0853" class="cta-phone-large">(208) 390-0853</a>
+
+                    <div class="info-group">
+                        <h5>Location</h5>
+                        <p>Serving St. Anthony and local areas</p>
+                    </div>
+                    <div class="info-group">
+                        <h5>Hours of Operation</h5>
+                        <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                        <p>Sat - Sun: Closed</p>
+                    </div>
+                </div>
+                <div class="cta-form-side">
+                    <h4>Request Your Quote</h4>
+                    <p class="p-form-lead">Enter your details below and we will contact you</p>
+                    <form id="lead-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="repair">Drywall Repair</option>
+                                <option value="tape-float">Tape & Float</option>
+                                <option value="texture">Texture</option>
+                                <option value="painting">Painting</option>
+                                <option value="new-install">New Install</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Optional Note</label>
+                            <textarea id="message" name="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary form-btn">Submit Request</button>
+                        <p id="form-status" class="status-msg"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fake-map">
+        Map Placeholder
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="logo-footer">E&L Drywall LLC</p>
+            <p>&copy; 2026 E&L Drywall LLC. All Rights Reserved.</p>
+            <p>Your privacy is important. Review our policy.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("lead-form");
+            const statusMsg = document.getElementById("form-status");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                // Disable button during submission
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.textContent = "Sending...";
+                submitBtn.disabled = true;
+
+                // Simulate form processing (Replace with real Formspree/Netlify action for live site)
+                setTimeout(() => {
+                    statusMsg.textContent = "Thank you! Your quote request has been sent. We will contact you shortly.";
+                    statusMsg.style.color = "var(--accent-black)";
+
+                    // Reset form
+                    form.reset();
+                    submitBtn.textContent = "Submit Request";
+                    submitBtn.disabled = false;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

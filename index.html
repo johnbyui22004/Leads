@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirty Driveway | Pressure Washing Driveways</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #0f172a;
+            /* Deep Slate Blue */
+            --accent-color: #ea580c;
+            /* High-visibility Orange */
+            --text-main: #334155;
+            --text-light: #f8fafc;
+            --bg-light: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #c2410c;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 80vh;
+            /* use local uploaded image for the hero background */
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                url('images/649702849_4368569916746585_873869551138442712_n.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: var(--text-light);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #c2410c;
+            transform: translateY(-2px);
+        }
+
+        /* --- SERVICES SECTION --- */
+        #services {
+            padding: 5rem 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* --- WHY CHOOSE US --- */
+        #why-us {
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .why-content {
+            flex: 1;
+        }
+
+        .why-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .check-list li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- GALLERY --- */
+        #gallery {
+            padding: 5rem 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-grid img:hover {
+            opacity: 0.8;
+        }
+
+        /* --- BOTTOM CTA --- */
+        #bottom-cta {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 5rem 20px;
+        }
+
+        #bottom-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #bottom-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #why-us {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Dirty<span>Driveway</span></div>
+        <button class="nav-btn quote-trigger">Call: (208) 555-0198</button>
+    </nav>
+
+    <section id="hero">
+        <h1>Professional Driveway Pressure Washing</h1>
+        <p>We specialize in pressure washing driveways, sidewalks, and concrete surfaces to remove oil, grime, and
+            stains — restoring curb appeal fast. Serving Rexburg, Idaho Falls, and surrounding areas.</p>
+        <button class="cta-btn quote-trigger">Get Your Free Estimate Today</button>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚿</div>
+                <h3>Driveway Pressure Washing</h3>
+                <p>High-pressure cleaning to remove oil, dirt, mildew, and tire marks so your driveway looks like new.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧽</div>
+                <h3>Concrete Stain Removal</h3>
+                <p>Specialized cleaners and techniques to break down and remove stubborn stains without damaging the
+                    surface.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Commercial & Residential Cleaning</h3>
+                <p>From homes to parking lots, we handle jobs of all sizes with professional equipment and trained
+                    crews.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Sealing & Protective Treatments</h3>
+                <p>Extend the life of cleaned surfaces with sealants that repel stains and slow future dirt buildup.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us">
+        <div class="why-image">
+            <!-- contractor / pressure-washing image -->
+            <img src="https://source.unsplash.com/800x600/?pressure-washing,contractor,driveway"
+                alt="Contractor pressure washing a driveway">
+        </div>
+        <div class="why-content">
+            <h2 class="section-title" style="margin-bottom: 1rem; text-align: left;">Why Choose Dirty Driveway?</h2>
+            <p>We understand how important curb appeal is. As a local, reliable team we treat every driveway like it's
+                our own — fast, safe, and effective cleaning using professional-grade equipment.</p>
+            <ul class="check-list">
+                <li>✔️ <strong>Experienced, Trained Technicians</strong></li>
+                <li>✔️ <strong>Fully Insured & Safety-Focused</strong></li>
+                <li>✔️ <strong>Transparent Pricing & Free Quotes</strong></li>
+                <li>✔️ <strong>Fast Service with Excellent Results</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="gallery-grid">
+            <img src="https://source.unsplash.com/600x400/?pressure-washing,driveway"
+                alt="Driveway pressure washing project 1">
+            <img src="https://source.unsplash.com/600x400/?concrete-cleaning,pressure-wash"
+                alt="Driveway pressure washing project 2">
+            <img src="https://source.unsplash.com/600x400/?power-wash,contractor"
+                alt="Driveway pressure washing project 3">
+        </div>
+    </section>
+
+    <section id="bottom-cta">
+        <h2>Need help with your driveway?</h2>
+        <p>Don't let oil and stains become permanent. Book a fast, professional pressure-washing service today and
+            restore your property's curb appeal.</p>
+        <button class="cta-btn quote-trigger" style="background-color: white; color: var(--primary-color);">Get a Free
+            Estimate</button>
+    </section>
+
+    <script>
+        // Select all buttons meant to trigger a quote/call
+        const quoteButtons = document.querySelectorAll('.quote-trigger');
+
+        quoteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert("This button would open up a contact form or directly call the business! A great way to turn visitors into leads.");
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Honey Do List | Handyman Services</title>
+    <style>
+        /* Base Variables - Derived from the flyer's branding */
+        :root {
+            --bg-light: #FDF8E7; /* Light cream/yellow background */
+            --bg-dark: #3E2723; /* Dark brown from the flyer text areas */
+            --accent-gold: #F4B41A; /* Golden yellow */
+            --accent-orange: #D87D0F; /* Darker orange for gradients/hover */
+            --text-dark: #2D1C15; 
+            --white: #FFFFFF;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--bg-dark);
+            text-transform: uppercase;
+        }
+
+        /* Highlight Text */
+        .highlight {
+            color: var(--accent-orange);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-orange);
+            color: var(--white);
+        }
+
+        .btn-dark {
+            background-color: var(--bg-dark);
+            color: var(--accent-gold);
+        }
+
+        .btn-dark:hover {
+            background-color: #2a1a17;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            border-bottom: 5px solid var(--bg-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            color: var(--accent-orange);
+            font-style: italic;
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--bg-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--bg-dark);
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: var(--bg-dark);
+            margin: 6px auto;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Layout Blocks */
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0 80px;
+            position: relative;
+            border-bottom: 10px solid var(--accent-gold);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 15px;
+            font-weight: 900;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transform: rotate(15deg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 3px dashed var(--bg-dark);
+            font-size: 0.9rem;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--bg-light);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 6px solid var(--bg-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-list li {
+            font-size: 1.1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-list li::before {
+            content: "☑";
+            color: var(--accent-orange);
+            font-size: 1.4rem;
+            margin-right: 10px;
+        }
+
+        /* Proof Section (Before/After) */
+        .proof {
+            background-color: var(--accent-gold);
+            padding: 60px 0;
+        }
+
+        .proof .section-title {
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+        }
+
+        .proof-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--bg-dark);
+            margin-bottom: 40px;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .ba-box {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .ba-box h3 {
+            text-align: center;
+            color: var(--bg-dark);
+        }
+
+        .ba-images {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ba-img-placeholder {
+            flex: 1;
+            background-color: #ddd;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .ba-label {
+            background: var(--bg-dark);
+            color: var(--white);
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* About / Trust Section */
+        .trust {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .trust h2 {
+            color: var(--accent-gold);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .trust-badge span {
+            color: var(--accent-gold);
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid #eee;
+        }
+
+        .big-phone {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            text-decoration: none;
+            margin: 20px 0;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        .big-phone:hover {
+            color: var(--bg-dark);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: #fafafa;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2D1C15;
+            color: #aaa;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                border-bottom: 5px solid var(--bg-dark);
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 30px auto;
+                transform: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .big-phone {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>The Honey Do List</h1>
+                <span>Handyman Services</span>
+            </div>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav id="nav-links">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Our Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="badge">First-Time<br>Customer<br>Discounts!</div>
+            <h2>Got a Honey-Do List?<br>We Can Help!</h2>
+            <p>Reliable, affordable handyman services serving Lincoln County & surrounding areas. We knock out your to-do list so you don't have to.</p>
+            <div class="hero-buttons">
+                <a href="tel:8286305572" class="btn btn-primary">Call 828-630-5572</a>
+                <a href="#contact" class="btn btn-dark">Get a Free Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">We Do It All</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <h3>Repairs & Fixes</h3>
+                    <p>Don't let broken fixtures ruin your week. We handle the small jobs others won't.</p>
+                    <ul class="service-list">
+                        <li>Drywall Repair</li>
+                        <li>Faucet & Toilet Repair</li>
+                        <li>Door & Window Fixes</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Installations</h3>
+                    <p>Bought something new but don't want to mess with the wiring or heavy lifting? Give us a call.</p>
+                    <ul class="service-list">
+                        <li>Light Fixtures</li>
+                        <li>Ceiling Fans</li>
+                        <li>TV Mounting</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Maintenance & Upgrades</h3>
+                    <p>Keep your home looking and functioning great all year round.</p>
+                    <ul class="service-list">
+                        <li>Carpentry</li>
+                        <li>Painting</li>
+                        <li>And Much More!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="proof">
+        <div class="container">
+            <h2 class="section-title">See the Difference</h2>
+            <p class="proof-subtitle">High-quality repairs done right the first time.</p>
+            
+            <div class="ba-grid">
+                <div class="ba-box">
+                    <h3>Drywall Repair</h3>
+                    <div class="ba-images">
+                        <div class="ba-img-placeholder" style="background-color: #d7ccc8;">
+                            <div class="ba-label">BEFORE</div>
+                        </div>
+                        <div class="ba-img-placeholder" style="background-color: #efebe9;">
+                            <div class="ba-label">AFTER</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ba-box">
+                    <h3>Fixture Installation</h3>
+                    <div class="ba-images">
+                        <div class="ba-img-placeholder" style="background-color: #cfd8dc;">
+                            <div class="ba-label">BEFORE</div>
+                        </div>
+                        <div class="ba-img-placeholder" style="background-color: #eceff1;">
+                            <div class="ba-label">AFTER</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h2>Your Local Property Pros</h2>
+            <p>We pride ourselves on showing up on time, doing honest work, and leaving your house cleaner than we found it.</p>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Licensed & Insured
+                </div>
+                <div class="trust-badge">
+                    <span>$</span>
+                    Free Estimates
+                </div>
+                <div class="trust-badge">
+                    <span>📍</span>
+                    Lincoln County Local
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Get to Work</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Call Us Directly</h3>
+                    <p>Skip the hassle. Call us right now and tell us what's on your list. We'll give you a free estimate.</p>
+                    <a href="tel:8286305572" class="big-phone">828-630-5572</a>
+                    
+                    <h3 style="margin-top: 30px;">Service Area</h3>
+                    <p>Proudly serving Lincoln County and the surrounding areas.</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Request a Call Back</h3>
+                    <form id="contact-form">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                        <textarea id="message" rows="4" placeholder="What jobs are on your Honey-Do list?" required></textarea>
+                        <button type="submit" class="btn btn-primary btn-block">Get Your Free Estimate</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The Honey Do List Handyman Services. All rights reserved.</p>
+            <p>Licensed & Insured</p>
+            <div class="social-icons">
+                <span>[ Facebook ]</span>
+                <span>[ Nextdoor ]</span>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #666;">Website built by Morningstar Web Solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle logic
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Basic form handling to prevent page reload for the demo
+            const contactForm = document.getElementById('contact-form');
+            if(contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // Show a quick alert for the demo
+                    alert('Got it! We will call you shortly to discuss your list.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+```

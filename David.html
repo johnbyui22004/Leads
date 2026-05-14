@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David's Junk Removal | Local Junk Removal & Cleanup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Matching the cream and dark navy theme */
+        :root {
+            --bg-color: #F3EFE9; 
+            --bg-dark: #0A122A; 
+            --text-dark: #0A122A; 
+            --text-light: #FFFFFF;
+            --white: #FFFFFF;
+            --accent-stars: #F59E0B;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-logo: 'Great Vibes', cursive;
+            --transition-speed: 0.3s;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #000;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--text-dark);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-svg {
+            width: 60px;
+            height: 60px;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-david {
+            font-family: var(--font-logo);
+            font-size: 2rem;
+            line-height: 0.8;
+            margin-bottom: -2px;
+            color: var(--text-dark);
+        }
+
+        .logo-name {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 5px auto;
+            transition: all var(--transition-speed);
+        }
+
+        /* Layout Blocks */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Services Cards */
+        .service-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--text-dark);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Why Choose Us - Dark Section */
+        .why-us {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .why-us .section-title {
+            color: var(--text-light);
+        }
+
+        .why-us-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-us-list {
+            margin-top: 20px;
+        }
+
+        .why-us-list li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .why-us-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Reviews */
+        .review-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--text-dark);
+        }
+
+        .review-stars {
+            color: var(--accent-stars);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .review-name {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .huge-phone {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .hours-title {
+            margin-top: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .map-placeholder {
+            background-color: #ddd;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 8px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 20px 0;
+                border-bottom: 3px solid var(--text-dark);
+                flex-direction: column;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .huge-phone {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-wrap">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" stroke="var(--text-dark)" stroke-width="2" fill="none"/>
+                    <path d="M50 15V85M15 50H85M75 25L25 75M75 75L25 25M50 35H35V50M65 50H50V65" stroke="var(--text-dark)" stroke-width="2" fill="none"/>
+                    <rect x="25" y="60" width="30" height="20" rx="3" fill="var(--text-dark)"/>
+                    <rect x="55" y="65" width="20" height="15" rx="2" fill="var(--bg-color)"/>
+                    <circle cx="35" cy="80" r="4" fill="var(--bg-color)"/>
+                    <circle cx="65" cy="80" r="4" fill="var(--bg-color)"/>
+                    <path d="M12 18l1.5 2.5 2.5 1.5-2.5 1.5-1.5 2.5-1.5-2.5-2.5-1.5 2.5-1.5zM88 18l1.5 2.5 2.5 1.5-2.5 1.5-1.5 2.5-1.5-2.5-2.5-1.5 2.5-1.5z" fill="var(--text-dark)"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-david">David's</span>
+                    <span class="logo-name">Junk Removal</span>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <nav class="nav-links" id="nav-content">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#why-us" class="nav-link">About</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Got Junk? Let Us Handle All Your Cleanup Needs.</h1>
+            <p class="hero-tagline">Out With The Mess, In With The Clean. Honest pricing, hard-working crew, and fast service.</p>
+            <div class="hero-cta">
+                <a href="tel:8129892138" class="btn btn-primary">Call (812) 989-2138</a>
+                <a href="#contact" class="btn btn-outline">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">What We Remove</h2>
+            <div class="grid grid-3">
+                <div class="service-card">
+                    <h3 class="service-title">Furniture Disposal</h3>
+                    <p class="service-description">Sofas, mattresses, dressers, and more. We get them out of your way safely without scratching your walls.</p>
+                    <a href="tel:8129892138" class="btn btn-outline btn-block">Call to Book</a>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Appliance Recycling</h3>
+                    <p class="service-description">Refrigerators, washers, dryers, and old TVs. We handle the heavy lifting and dispose of them properly.</p>
+                    <a href="tel:8129892138" class="btn btn-outline btn-block">Call to Book</a>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Yard Waste & Debris</h3>
+                    <p class="service-description">Branches, old fencing, dirt, and construction cleanup. We leave your yard looking clean again.</p>
+                    <a href="tel:8129892138" class="btn btn-outline btn-block">Call to Book</a>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Full Cleanouts</h3>
+                    <p class="service-description">Garage, attic, basement, or estate cleanouts. No job is too big. We clear out the whole space.</p>
+                    <a href="tel:8129892138" class="btn btn-outline btn-block">Call to Book</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose David's?</h2>
+            <div class="why-us-content">
+                <ul class="why-us-list">
+                    <li><strong>Upfront Pricing:</strong> No hidden fees. You know what you pay before we start loading.</li>
+                    <li><strong>Locally Owned:</strong> We are a local crew dedicated to helping you reclaim your space.</li>
+                    <li><strong>Fast Service:</strong> When you want it gone, you want it gone now. We show up on time.</li>
+                    <li><strong>Responsible Disposal:</strong> We sort and recycle to keep as much out of the landfill as possible.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">Rated 4.9 Stars</h2>
+            <div class="grid grid-3">
+                <div class="review-card">
+                    <span class="review-stars">★★★★★</span>
+                    <p>"Called them in the morning, and the old couch and TV were gone by the afternoon. Great guys, fair price."</p>
+                    <span class="review-name">- Sarah T.</span>
+                </div>
+                <div class="review-card">
+                    <span class="review-stars">★★★★★</span>
+                    <p>"They cleared out my entire garage in two hours. Saved me a weekend of work. Highly recommend."</p>
+                    <span class="review-name">- Mark P.</span>
+                </div>
+                <div class="review-card">
+                    <span class="review-stars">★★★★★</span>
+                    <p>"Showed up right on time, gave me a quote, and got straight to work. Very professional."</p>
+                    <span class="review-name">- David R.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get Rid of Your Junk Today</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Give Us a Call</h3>
+                    <p>Ready to reclaim your space? Call us directly for a fast quote and scheduling.</p>
+                    <a href="tel:8129892138" class="huge-phone">(812) 989-2138</a>
+                    
+                    <h3 class="hours-title">Hours</h3>
+                    <p>Monday - Saturday: 8:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Request a Quote</h3>
+                    <form id="contactForm">
+                        <input type="text" id="name" required placeholder="Your Name">
+                        <input type="tel" id="phone" required placeholder="Phone Number">
+                        <textarea id="message" rows="4" required placeholder="What do you need removed?"></textarea>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-placeholder">
+                <p>[ Google Maps Embed Placeholder ]<br>Serving the local area</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 David's Junk Removal & Cleanup. All rights reserved.</p>
+            <p>Website built by Morningstar Web Solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navContent = document.getElementById('nav-content');
+            
+            if (mobileMenuBtn && navContent) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navContent.classList.toggle('active');
+                });
+                
+                const navLinks = navContent.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navContent.classList.remove('active');
+                    });
+                });
+            }
+            
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert("Thanks for reaching out! We'll contact you shortly.");
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
