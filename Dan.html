@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dan's Window Tint is your local expert for auto, residential, and commercial window tinting. Honest pricing, quality work, and lifetime warranties.">
+    <title>Dan's Window Tint | Local Tinting Experts</title>
+
+    <style>
+        /* CSS VARIABLES - Trustworthy & Local Palette */
+        :root {
+            --primary: #cc0000;
+            /* Action Red for high conversions */
+            --primary-hover: #990000;
+            --secondary: #1e3a8a;
+            /* Trustworthy Navy Blue */
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* RESET & BASE - Mobile First */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CARDS (Replacing Glassmorphism) */
+        .card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+
+        /* BUTTONS - Big, Tappable, Conversion-Focused */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 18px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            .btn {
+                width: auto;
+                min-width: 250px;
+            }
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 3px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+
+        /* NAVIGATION & TOP BAR */
+        .top-bar {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header {
+            background: var(--bg-white);
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            width: 92%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: var(--text-dark);
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.2s;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary);
+            }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: var(--bg-white);
+            padding: 4rem 0;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        /* GRID LAYOUTS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* SERVICES */
+        .service-card {
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        /* BENEFITS / COUNTERS */
+        .benefits-section {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .benefits-section .section-title {
+            color: white;
+        }
+
+        .benefits-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .counter-box h4 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-box p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: #e0e0e0;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        /* TESTIMONIALS */
+        .testimonial-card {
+            border-left: 4px solid var(--primary);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .author {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--text-dark);
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ ACCORDION */
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-white);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.25rem;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 1.25rem 1.25rem 1.25rem;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary);
+        }
+
+        /* CONTACT FORM & MAP */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .location-info {
+            background: var(--bg-white);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        /* FLOATING CTA */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: transform 0.2s;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.05);
+            background: var(--primary-hover);
+        }
+
+        .floating-btn svg {
+            width: 35px;
+            height: 35px;
+            fill: currentColor;
+        }
+
+        /* SCROLL ANIMATIONS */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR - Trust & Immediate Contact -->
+    <div class="top-bar">
+        Call us today for a free estimate: <a href="tel:2086818155">📞 208-681-8155</a>
+    </div>
+
+    <!-- HEADER -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Dan's <span>Window Tint</span></a>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#gallery">Our Work</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content animate-up">
+            <h1>Expert Window Tinting You Can Trust</h1>
+            <p>Your local choice for high-quality auto, home, and commercial window tinting. Honest pricing, flawless
+                installations, and lifetime warranties.</p>
+            <div class="hero-buttons">
+                <a href="tel:2086818155" class="btn">Call 208-681-8155</a>
+                <a href="#contact" class="btn btn-outline">Request a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="container" id="services">
+        <h2 class="section-title text-center animate-up">Our Services</h2>
+        <div class="grid-3">
+            <div class="card service-card animate-up">
+                <h3>🚗 Auto Tinting</h3>
+                <p>Protect your interior and stay cool in the summer. We use premium carbon and ceramic films that won't
+                    fade or bubble.</p>
+            </div>
+            <div class="card service-card animate-up" style="transition-delay: 0.1s;">
+                <h3>🏠 Residential</h3>
+                <p>Lower your energy bills and stop annoying screen glare. Great for homes with large sun-facing
+                    windows.</p>
+            </div>
+            <div class="card service-card animate-up" style="transition-delay: 0.2s;">
+                <h3>🏢 Commercial</h3>
+                <p>Improve building security, increase privacy, and create a comfortable environment for your employees
+                    and customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS / COUNTERS -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <h2 class="section-title text-center animate-up">Why Choose Dan's?</h2>
+            <div class="benefits-wrap">
+                <div class="counter-box animate-up">
+                    <h4 class="counter" data-target="15">0</h4>
+                    <p>Years in Business</p>
+                </div>
+                <div class="counter-box animate-up" style="transition-delay: 0.1s;">
+                    <h4 class="counter" data-target="99">0</h4>
+                    <p>% UV Blocked</p>
+                </div>
+                <div class="counter-box animate-up" style="transition-delay: 0.2s;">
+                    <h4 class="counter" data-target="500">0</h4>
+                    <p>+ 5-Star Reviews</p>
+                </div>
+                <div class="counter-box animate-up" style="transition-delay: 0.3s;">
+                    <h4 class="counter" data-target="100">0</h4>
+                    <p>% Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="container" id="gallery">
+        <h2 class="section-title text-center animate-up">Recent Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item animate-up"><img src="images/Screenshot 2026-07-27 at 4.05.00 PM.png"
+                    alt="Recent Work 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="gallery-item animate-up" style="transition-delay: 0.1s;"><img
+                    src="images/Screenshot 2026-07-27 at 4.05.55 PM.png" alt="Recent Work 2"
+                    style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="gallery-item animate-up" style="transition-delay: 0.2s;"><img
+                    src="images/Screenshot 2026-07-27 at 4.06.07 PM.png" alt="Recent Work 3"
+                    style="width: 100%; height: 100%; object-fit: cover;"></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="container" id="reviews">
+        <h2 class="section-title text-center animate-up">Hear From Our Customers</h2>
+        <div class="grid-3">
+            <div class="card testimonial-card animate-up">
+                <div class="stars">★★★★★</div>
+                <p>"Dan is a true professional. Dropped my truck off in the morning and it was done by lunch. No
+                    bubbles, perfect edges."</p>
+                <div class="author">- Mike T., Local Resident</div>
+            </div>
+            <div class="card testimonial-card animate-up" style="transition-delay: 0.1s;">
+                <div class="stars">★★★★★</div>
+                <p>"Fair pricing and honest work. We had our living room windows done to stop the afternoon heat. Highly
+                    recommend this shop."</p>
+                <div class="author">- Sarah L., Homeowner</div>
+            </div>
+            <div class="card testimonial-card animate-up" style="transition-delay: 0.2s;">
+                <div class="stars">★★★★★</div>
+                <p>"Been taking my family's cars here for years. You won't find a better tint guy in the area. The
+                    ceramic tint is a lifesaver."</p>
+                <div class="author">- James R.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="container" id="faq">
+        <h2 class="section-title text-center animate-up">Frequently Asked Questions</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item animate-up">
+                <button class="faq-question">Do you offer a warranty? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Yes, all of our window films come with a manufacturer's lifetime warranty against bubbling,
+                        peeling, and fading.</p>
+                </div>
+            </div>
+            <div class="faq-item animate-up">
+                <button class="faq-question">How long does a car tint take? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>A standard 4-door vehicle typically takes about 2 to 3 hours. We recommend dropping it off for
+                        the morning or afternoon.</p>
+                </div>
+            </div>
+            <div class="faq-item animate-up">
+                <button class="faq-question">What is ceramic tint? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Ceramic tint is a premium film that blocks significantly more heat than standard dyed tint
+                        without making your windows pitch black. It also doesn't interfere with your cell phone signal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & MAP -->
+    <section class="container" id="contact">
+        <h2 class="section-title text-center animate-up">Get Your Free Estimate</h2>
+        <div class="contact-grid">
+            <!-- Form -->
+            <div class="card animate-up">
+                <form onsubmit="event.preventDefault(); alert('Message Sent! Dan will contact you shortly.');">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Needed</label>
+                        <select class="form-control" required>
+                            <option value="">Select an option...</option>
+                            <option value="auto">Auto Tinting</option>
+                            <option value="home">Home / Residential</option>
+                            <option value="commercial">Business / Commercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Vehicle Make/Model or Job Details</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Request</button>
+                </form>
+            </div>
+
+            <!-- Map and Location -->
+            <div class="location-info animate-up" style="transition-delay: 0.2s;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.9977862730493!2d-111.83178332325899!3d43.73137284737057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535472545b3b9241%3A0x7bd315668f7b937!2sDan's%20Window%20Tint!5e0!3m2!1sen!2sus!4v1785190099906!5m2!1sen!2sus"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <h3>Dan's Window Tint</h3>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    123 Main Street<br>
+                    Your City, ST 12345
+                </p>
+                <p style="margin-top: 1rem; font-weight: bold;">
+                    Hours: Mon-Fri 8am - 5pm
+                </p>
+                <a href="#" class="btn btn-outline" style="margin-top: 1.5rem; display: inline-block;">Get
+                    Directions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING CTA -->
+    <a href="tel:2086818155" class="floating-btn" aria-label="Call Now">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+        </svg>
+    </a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 2. Animated Counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000; // ms
+                    const increment = target / (duration / 16);
+
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            entry.target.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            entry.target.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // 3. FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-question');
+            btn.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('span').innerText = '+';
+                });
+
+                // Toggle clicked
+                if (!isActive) {
+                    item.classList.add('active');
+                    btn.querySelector('span').innerText = '−';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
