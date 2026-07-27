@@ -168,27 +168,111 @@
         }
 
         .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-nav-toggle {
             display: none;
         }
 
-        @media (min-width: 992px) {
+        @media (max-width: 991px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
             .nav-links {
-                display: flex;
-                gap: 2rem;
-                align-items: center;
+                position: fixed;
+                top: 0;
+                right: 0;
+                background: var(--bg-white);
+                width: 80%;
+                height: 100vh;
+                flex-direction: column;
+                padding: 4rem 2rem;
+                box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+                transform: translateX(100%);
+                transition: transform 0.3s ease-out;
+                gap: 1.5rem;
+                align-items: stretch;
+                z-index: 1100;
+            }
+
+            .nav-links.nav-visible {
+                transform: translateX(0);
             }
 
             .nav-links a {
                 color: var(--text-dark);
-                text-decoration: none;
-                font-weight: bold;
-                transition: color 0.2s;
+                padding: 1rem;
+                text-align: center;
+                border-bottom: 1px solid var(--border-color);
+                font-size: 1.2rem;
             }
 
-            .nav-links a:hover {
-                color: var(--primary);
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1200;
+            }
+
+            .mobile-nav-toggle[aria-expanded="true"] + .nav-links {
+                transform: translateX(0);
+            }
+
+            .close-nav-btn {
+                display: none;
+            }
+
+            @media (max-width: 991px) {
+                .close-nav-btn {
+                    display: block;
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 1.5rem;
+                    background: transparent;
+                    border: none;
+                    font-size: 2.5rem;
+                    cursor: pointer;
+                    color: var(--text-dark);
+                    line-height: 1;
+                }
             }
         }
+
+        @media (min-width: 992px) {
+            .nav-links {
+                display: flex !important; /* Ensure it's visible on desktop */
+                position: static;
+                height: auto;
+                width: auto;
+                background: none;
+                box-shadow: none;
+                transform: none;
+                flex-direction: row;
+                padding: 0;
+            }
+        }
+
 
         /* HERO SECTION */
         .hero {
@@ -484,7 +568,12 @@
     <header id="header">
         <div class="nav-container">
             <a href="#" class="logo">Dan's <span>Window Tint</span></a>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <svg fill="var(--secondary)" height="24px" width="24px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 342.357 342.357" xml:space="preserve"><g><rect y="27.229" width="342.357" height="42.667"/><rect y="149.844" width="342.357" height="42.667"/><rect y="272.459" width="342.357" height="42.667"/></g></svg>
+            </button>
             <nav class="nav-links">
+                <button class="close-nav-btn" aria-label="Close menu">&times;</button>
                 <a href="#services">Services</a>
                 <a href="#gallery">Our Work</a>
                 <a href="#reviews">Reviews</a>
@@ -658,7 +747,7 @@
             <div class="location-info animate-up" style="transition-delay: 0.2s;">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.9977862730493!2d-111.83178332325899!3d43.73137284737057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535472545b3b9241%3A0x7bd315668f7b937!2sDan's%20Window%20Tint!5e0!3m2!1sen!2sus!4v1785190099906!5m2!1sen!2sus"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    width="100%" height="450" style="border:0; max-width: 600px; margin: 0 auto; display: block;" allowfullscreen="" loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <h3>Dan's Window Tint</h3>
                 <p style="margin-top: 1rem; color: var(--text-muted);">
@@ -751,6 +840,39 @@
                 }
             });
         });
+
+        // 4. Mobile Navigation
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const closeNavBtn = document.querySelector('.close-nav-btn');
+
+        if (navToggle && navLinks && closeNavBtn) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.add('nav-visible');
+                navToggle.setAttribute('aria-expanded', 'true');
+            });
+
+            const closeNav = () => {
+                navLinks.classList.remove('nav-visible');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            closeNavBtn.addEventListener('click', closeNav);
+
+            // Close nav when a link is clicked
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    closeNav();
+                }
+            });
+            
+            // Close nav when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    closeNav();
+                }
+            });
+        }
     </script>
 </body>
 
