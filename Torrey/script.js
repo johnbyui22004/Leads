@@ -1,53 +1,108 @@
-// ---------- Chip checker tool ----------
-const chipOptions = document.querySelectorAll(".chip-option");
-const chipResult = document.getElementById("chipResult");
+/* =============================================================
+   STERLING AUTO GLASS — TEMPLATE SCRIPT
+   Vanilla JavaScript, no dependencies.
+   Handles: mobile nav toggle, FAQ accordion, quote form submission,
+   and the dynamic copyright year in the footer.
+   ============================================================= */
 
-const resultText = {
-  repair: {
-    title: "Good news — that's a repair.",
-    text: "This is exactly what we fix on-site in about 30 minutes, and it's usually covered by insurance at no cost to you."
-  },
-  maybe: {
-    title: "Likely repairable — worth a look.",
-    text: "Chips this size can usually still be repaired if caught soon. Send us a photo and we'll confirm before you book."
-  },
-  replace: {
-    title: "This one likely needs replacement.",
-    text: "Cracks this size compromise the windshield's strength. We'll quote a full replacement, often covered by insurance too."
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* -----------------------------------------------------------
+     MOBILE NAV TOGGLE
+     Opens/closes the primary navigation on small screens and
+     closes it automatically after a link is tapped.
+     ----------------------------------------------------------- */
+  var navToggle = document.getElementById('navToggle');
+  var primaryNav = document.getElementById('primaryNav');
+
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = primaryNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    var navLinks = primaryNav.querySelectorAll('a');
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        primaryNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
   }
-};
 
-chipOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    // highlight the selected option
-    chipOptions.forEach((opt) => opt.classList.remove("active"));
-    option.classList.add("active");
+  /* -----------------------------------------------------------
+     FAQ ACCORDION
+     Only one panel open at a time. Height is set dynamically via
+     scrollHeight so the CSS transition animates smoothly.
+     ----------------------------------------------------------- */
+  var accordionTriggers = document.querySelectorAll('.accordion-trigger');
 
-    // show the matching result
-    const result = option.getAttribute("data-result");
-    const data = resultText[result];
+  accordionTriggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var panel = trigger.nextElementSibling;
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-    chipResult.innerHTML = `<strong>${data.title}</strong><br>${data.text}`;
-    chipResult.classList.add("visible");
+      // Close every other open panel first
+      accordionTriggers.forEach(function (otherTrigger) {
+        if (otherTrigger !== trigger) {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+          otherTrigger.nextElementSibling.style.maxHeight = null;
+        }
+      });
+
+      if (isOpen) {
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.style.maxHeight = null;
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
   });
-});
 
-// ---------- Quote form ----------
-const quoteForm = document.getElementById("quoteForm");
-const formFields = document.getElementById("formFields");
-const formSuccess = document.getElementById("formSuccess");
+  /* -----------------------------------------------------------
+     QUOTE FORM SUBMISSION
+     This demo intercepts submission and shows a confirmation
+     message in place. Replace the section marked below with a
+     real fetch() call to your form backend, email service, or
+     CRM endpoint when deploying for a live business.
+     ----------------------------------------------------------- */
+  var quoteForm = document.getElementById('quoteForm');
+  var formNote = document.getElementById('formNote');
 
-quoteForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-  const name = document.getElementById("qName").value.trim();
-  const phone = document.getElementById("qPhone").value.trim();
+      if (!quoteForm.checkValidity()) {
+        formNote.textContent = 'Please fill in your name and phone number so we can reach you.';
+        formNote.style.color = '#B4342A';
+        return;
+      }
 
-  if (!name || !phone) {
-    return;
+      // ---- Replace this block with a real submission call ----
+      // Example:
+      // fetch('/api/quote-requests', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(Object.fromEntries(new FormData(quoteForm)))
+      // });
+      // ----------------------------------------------------------
+
+      formNote.style.color = '#16233F';
+      formNote.textContent = "Thanks! We've received your request and will call you back shortly.";
+      quoteForm.reset();
+    });
   }
 
-  // In a real site, you'd send this data to a server or form service here.
-  formFields.style.display = "none";
-  formSuccess.classList.add("visible");
+  /* -----------------------------------------------------------
+     FOOTER YEAR
+     ----------------------------------------------------------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
 });
